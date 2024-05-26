@@ -3,11 +3,15 @@ import classes from "./Counter.module.css";
 import { counterActions } from "../store";
 
 const Counter = () => {
+  //used for redux to extract state from the store
   const counter = useSelector((state) => state.counter);
   const toggle = useSelector((state) => state.isToggle);
 
+  // used in redux and handles the dispatching of actions to the store
   const dispatch = useDispatch();
 
+
+  // used for redux toolkit to dispatch actions methods 
   const toggleCounterHandler = () => {
     dispatch(counterActions.toggle());
   };
