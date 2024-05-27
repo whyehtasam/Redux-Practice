@@ -31,6 +31,20 @@ const counterSlice = createSlice({
     },
   },
 });
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState: { isAuthenticated: false },
+  reducers: {
+    login(state) {
+      state.isAuthenticated = true;
+    },
+    logout(state) {
+      state.isAuthenticated = false;
+    },
+  },
+});
+
 // const counterReducer = (state = initialState, action) => {
 //   // eslint-disable-next-line default-case
 //   switch (action.type) {
@@ -63,11 +77,15 @@ const counterSlice = createSlice({
 
 // Create a Redux store with the counter reducer
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: {
+    counter: counterSlice.reducer,
+    auth: authSlice.reducer,
+  }
 });
 
 // Export the generated actions for use in components
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 // Export the store for use in the Provider
 export default store;
