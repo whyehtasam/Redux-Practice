@@ -4,8 +4,8 @@ import { counterActions } from "../store";
 
 const Counter = () => {
   //used for redux to extract state from the store
-  const counter = useSelector((state) => state.counter);
-  const toggle = useSelector((state) => state.isToggle);
+  const counter = useSelector((state) => state.counter.counter);
+  const toggle = useSelector((state) => state.counter.isToggle);
 
   // used in redux and handles the dispatching of actions to the store
   const dispatch = useDispatch();

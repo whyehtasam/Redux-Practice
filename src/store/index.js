@@ -2,13 +2,14 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 // Define the initial state of the counter
-const initialState = { counter: 0, isToggle: true };
+const initialCounterState = { counter: 0, isToggle: true };
 
 // Create a slice for the counter. This automatically generates reducers and actions
 const counterSlice = createSlice({
   name: "counter", // The name of the slice
-  initialState, // The initial state
-  reducers: { // The reducer functions
+  initialState: initialCounterState, // The initial state
+  reducers: {
+    // The reducer functions
     increment(state) {
       // Increment the counter
       state.counter++;
@@ -32,9 +33,11 @@ const counterSlice = createSlice({
   },
 });
 
+// Define the initial state of the authentication
+ const initialAuthState = { isAuthenticated: false };
 const authSlice = createSlice({
   name: "auth",
-  initialState: { isAuthenticated: false },
+  initialState: initialAuthState,
   reducers: {
     login(state) {
       state.isAuthenticated = true;
@@ -80,7 +83,7 @@ const store = configureStore({
   reducer: {
     counter: counterSlice.reducer,
     auth: authSlice.reducer,
-  }
+  },
 });
 
 // Export the generated actions for use in components
